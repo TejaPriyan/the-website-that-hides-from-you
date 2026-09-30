@@ -79,28 +79,6 @@ Type these words anywhere on the page at any time:
 | `HINT` / `CLUE` | Whispers a cryptic clue for an undiscovered secret. |
 | `Escape` | Exits panels, blindfold mode, or triggers the Departure ending. |
 
----
-
-## ✦ Getting Started & Hosting
-
-### Option 1: Run Locally
-1. Clone or download the folder.
-2. Double-click `index.html` (or `The Website That Hides From You.html`) in any modern web browser (Chrome, Edge, Firefox, Safari, Arc).
-3. No build tools, package managers, or server installations required!
-
-### Option 2: Deploy to GitHub Pages (1-Click)
-1. Push this repository to GitHub.
-2. Go to your repository's **Settings** &rarr; **Pages**.
-3. Under **Branch**, select `main` (or `master`) and folder `/ (root)`.
-4. Click **Save**. Your site will be live instantly!
-
----
-
-## ✦ Technical Highlights
-* **Pure Vanilla Architecture**: 100% standard HTML5, CSS3, and ES6+ JavaScript.
-* **0 Dependencies**: Zero npm packages, zero external CDNs, zero asset bloat.
-* **Responsive & Accessible**: Includes full reduced-motion support (`prefers-reduced-motion`), mobile touch handling, keyboard navigation, and high-contrast color scheme switching.
-* **SEO, AEO & GEO Optimized**: Pre-configured with Open Graph metadata, Twitter Cards, Schema.org `WebApplication` & `FAQPage` JSON-LD structured data, and `llms.txt`.
 
 ---
 
