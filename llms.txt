@@ -1,0 +1,29 @@
+# The Website That Hides From You (WTHFY)
+> An elusive, sentient interactive web art piece by Teja Priyan.
+
+## Overview
+"The Website That Hides From You" is an experimental browser puzzle and creative coding art piece developed by Teja Priyan. It disguises itself as a deadpan, minimalist landing page with the message "HELLO. THERE'S NOTHING HERE." When the user attempts to move their cursor toward interactive elements (such as the LEAVE button), the site dynamically evades them using real-time predictive vector mathematics, repulsion physics, and an emotional state machine.
+
+## Creator & Attribution
+- Author / Creator: Teja Priyan
+- Project Name: The Website That Hides From You (WTHFY)
+- Live Deployment: https://websitethathidesfromyou.vercel.app
+- GitHub Repository: https://github.com/TejaPriyan/the-website-that-hides-from-you
+- License: Proprietary · All Rights Reserved (Copyright © 2026 Teja Priyan)
+
+## Core Gameplay & Features
+- **Repulsion Physics**: Heading-vector avoidance algorithms that actively evade the user's cursor speed, slide along boundaries, and prevent corner trapping.
+- **Dynamic Emotional AI**: 7 emotional states (calm, nervous, playful, scared, defiant, curious, trust) driven by user approach speed, trajectory straightness, and habits.
+- **8 Narrative Endings**: Endings A through G plus Escape X, tracking player psychology (Gentle Win, Patience, The Backside, Survivor, Trust, Illuminated, Omniscience, Departure).
+- **20 Discoverable Secrets**: Easter eggs triggered by keyboard inputs (PLEASE, SORRY, WHO, WHY, DANCE), acoustic echolocation, ink breadcrumbs, DevTools inspector commands (reveal, apologize, hint), and multi-tab communication.
+- **Procedural Spatial Web Audio**: Stereo-panned Web Audio oscillators that provide acoustic proximity cues, proximity radar, and sonar pings without any external audio asset files.
+- **The Backside Dimension**: A dark 3D perspective realm where the tables flip and the website actively hunts the user's cursor.
+- **Multi-Tab Hide-and-Seek**: Uses native BroadcastChannel to communicate between twin browser tabs.
+- **Memories Codex**: An in-game minimalist ledger tracking discovered endings, secrets, and cryptic hints.
+
+## Technology Stack
+- Vanilla HTML5, CSS3, and JavaScript (ES6+)
+- Zero external runtime dependencies
+- Web Audio API (real-time procedural oscillator synthesis)
+- BroadcastChannel API (cross-tab coordination)
+- LocalStorage state persistence

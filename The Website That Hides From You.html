@@ -1,0 +1,608 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>The Website That Hides From You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The Website That Hides From You (WTHFY) by Teja Priyan. An interactive web art experiment and psychological digital puzzle featuring real-time evasion physics, 7 mood states, 8 multiple endings, and 20 hidden secrets.">
+<meta name="author" content="Teja Priyan">
+<meta name="creator" content="Teja Priyan">
+<meta name="publisher" content="Teja Priyan">
+<meta name="keywords" content="The Website That Hides From You, WTHFY, interactive website, evasive button, creative coding, browser art, Teja Priyan, web experiment, puzzle game, minimal design, procedural audio">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eeebe3">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#151513">
+
+<meta name="google-site-verification" content="google2af4e1ed3191321d">
+<link rel="canonical" href="https://websitethathidesfromyou.vercel.app/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://websitethathidesfromyou.vercel.app/">
+<meta property="og:title" content="The Website That Hides From You">
+<meta property="og:description" content="An interactive web art experience by Teja Priyan. A website that actively runs away from your cursor, reacts to your habits, and guards 8 endings and 20 secrets.">
+<meta property="og:site_name" content="The Website That Hides From You">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://websitethathidesfromyou.vercel.app/">
+<meta name="twitter:title" content="The Website That Hides From You">
+<meta name="twitter:description" content="An elusive digital experience that hides from your cursor. Created by Teja Priyan.">
+<meta name="twitter:creator" content="@TejaPriyan">
+
+<!-- AEO & GEO (Answer Engine & Generative Engine Optimization) Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "#webapp",
+      "name": "The Website That Hides From You",
+      "alternateName": ["WTHFY", "The Website That Runs Away"],
+      "url": "https://websitethathidesfromyou.vercel.app",
+      "sameAs": ["https://github.com/TejaPriyan/the-website-that-hides-from-you"],
+      "description": "An elusive, interactive digital art piece and browser game created by Teja Priyan. It features dynamic evasion vector physics, an emotional state machine, spatial procedural audio, 8 unique endings, and 20 hidden secrets.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "All modern browsers",
+      "inLanguage": "en",
+      "genre": ["Interactive Art", "Web Game", "Digital Puzzle", "Creative Coding"],
+      "author": {
+        "@type": "Person",
+        "name": "Teja Priyan"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Teja Priyan"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is The Website That Hides From You?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Website That Hides From You (WTHFY) is a minimalist interactive web art project created by Teja Priyan. It presents an elusive button and living interface that calculates evasion vectors away from user cursor velocity, reacts with different moods, and conceals secret gameplay mechanics, multiple dimensions, 8 endings, and 20 hidden secrets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who created The Website That Hides From You?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Website That Hides From You was created, designed, and coded by Teja Priyan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I play The Website That Hides From You?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can play it live at https://websitethathidesfromyou.vercel.app or view the repository at https://github.com/TejaPriyan/the-website-that-hides-from-you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many endings and secrets are in WTHFY?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Website That Hides From You contains 8 distinct narrative endings (Endings A through G plus Escape X) and 20 discoverable secrets, trackable through the in-game Memories Codex."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the evasion physics work in The Website That Hides From You?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The website calculates heading vectors and cursor velocity in real-time, repelling the button away from the cursor trajectory while preventing corner entrapment via dynamic slide algorithms, decoys, exhaustion states, and spatial Web Audio cues."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--bg:#eeebe3;--ink:#1a1917;--dim:#77736a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151513;--ink:#e9e5da;--dim:#8b877c}}
+:root[data-theme="dark"]{--bg:#151513;--ink:#e9e5da;--dim:#8b877c}
+:root[data-theme="light"]{--bg:#eeebe3;--ink:#1a1917;--dim:#77736a}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;transition:background 2.5s,color 2.5s}
+body.back{--bg:#0a0a0e;--ink:#d6d2c6;--dim:#66645d}
+#stage{position:fixed;inset:0}
+#hero{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;transition:opacity 2s;animation:in 2.4s both}
+@keyframes in{from{opacity:0}}
+h1{font-size:clamp(3.6rem,15vw,11rem);font-weight:400;letter-spacing:-.05em;margin:0;line-height:1;transition:transform 3s,filter 3s}
+#hero p{letter-spacing:.32em;font-size:.78rem;color:var(--dim);margin:1.4rem 0 0;animation:in 3.6s both}
+body.odd h1{transform:translateY(-8px) skewX(-3deg);filter:blur(.7px)}
+.o{position:absolute;left:0;top:0;font:inherit;letter-spacing:.28em;font-size:.82rem;padding:.95em 1.9em;background:var(--bg);color:var(--ink);border:1px solid var(--ink);cursor:pointer;will-change:transform;transition:opacity .25s;touch-action:none}
+.o:focus-visible,.pb:focus-visible,#bar button:focus-visible,#star:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.o.tired{border-style:dashed;opacity:.72}
+.o.gone{opacity:0;pointer-events:none}
+#msg{position:fixed;left:0;right:0;bottom:17%;text-align:center;letter-spacing:.34em;font-size:.78rem;opacity:0;transition:opacity .9s;pointer-events:none;padding:0 1rem;z-index:25}
+#msg.on{opacity:1}
+#ring{position:fixed;left:0;top:0;width:34px;height:34px;margin:-17px 0 0 -17px;border:1px solid var(--ink);border-radius:50%;pointer-events:none;opacity:0;z-index:5}
+#tether{position:fixed;left:0;top:0;width:1px;height:1px;background:var(--ink);opacity:0;transform-origin:0 0;pointer-events:none;transition:opacity .8s;z-index:5}
+#star{position:fixed;right:18px;top:calc(12px + env(safe-area-inset-top,0px));background:none;border:0;color:var(--ink);font:22px Georgia,serif;padding:14px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity 4s,visibility 0s;z-index:6}
+#star.on{opacity:.45;visibility:visible}
+.panel{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;text-align:center;background:var(--bg);z-index:20;padding:2rem;letter-spacing:.24em}
+.panel.on{display:flex}
+.panel h2{font-weight:400;font-size:clamp(1.3rem,5vw,2.8rem);margin:0;transition:opacity .5s;letter-spacing:.14em;line-height:1.3}
+.panel p{margin:0;color:var(--dim);font-size:.8rem}
+.pb{font:inherit;font-size:.8rem;letter-spacing:.26em;padding:.9em 1.8em;background:none;color:var(--ink);border:1px solid var(--ink);cursor:pointer}
+#bar{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:6px;z-index:30;font:11px/1 ui-monospace,Menlo,monospace}
+#bar button{font:inherit;background:var(--bg);border:1px solid var(--dim);color:var(--dim);padding:9px 10px;border-radius:3px;cursor:pointer;min-height:34px}
+#by{position:fixed;left:calc(10px + env(safe-area-inset-left,0px));top:calc(8px + env(safe-area-inset-top,0px));font:9px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;color:var(--dim);opacity:.6;pointer-events:none;z-index:40}
+#beam{position:fixed;left:0;top:0;width:300px;height:300px;margin:-150px 0 0 -150px;border-radius:50%;background:radial-gradient(circle,rgba(255,248,225,.3),transparent 68%);opacity:0;transition:opacity 1s;pointer-events:none;z-index:4}
+#ghost{position:fixed;left:0;right:0;bottom:6%;text-align:center;color:var(--bg);font-size:.8rem;letter-spacing:.3em;user-select:text;-webkit-user-select:text;z-index:1}
+#typed{position:fixed;left:0;right:0;top:27%;text-align:center;font-size:1.1rem;letter-spacing:.5em;color:var(--dim);opacity:0;transition:opacity .4s;pointer-events:none}
+#echo{position:fixed;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border:1px solid var(--ink);border-radius:50%;opacity:0;pointer-events:none;z-index:5;transition:opacity 1s}
+h1 span{display:inline-block;will-change:transform}
+#shadow{position:fixed;left:0;top:0;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;background:radial-gradient(circle,var(--ink),transparent 70%);opacity:0;transition:opacity .8s;pointer-events:none;z-index:0}
+#no{transition:opacity .3s}
+.rm *{animation:none!important}
+.rm h1{transition:none}
+.crumb{position:fixed;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--ink);pointer-events:none;z-index:3;animation:crumbP 1.6s infinite ease-in-out}
+@keyframes crumbP{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.8);opacity:.25}}
+#codex-list::-webkit-scrollbar{width:4px}
+#codex-list::-webkit-scrollbar-thumb{background:var(--dim)}
+</style></head><body>
+<div id="stage"><div id="hero"><h1>HELLO.</h1><p>THERE'S <span id="no">NOTHING</span> HERE.</p></div></div>
+<div id="tether"></div><div id="ring"></div>
+<div id="msg" role="status" aria-live="polite"></div>
+<button id="star" aria-label="A small hidden mark">*</button>
+<div class="panel" id="door"><h2>YOU FOUND ME.</h2><p>BUT THIS ISN'T THE REAL SITE.</p><button class="pb" id="go">CONTINUE</button></div>
+<div class="panel" id="end"><h2 id="endt"></h2><p id="endsub"></p><div id="endbtns" style="display:none;gap:10px;flex-wrap:wrap;justify-content:center"><button class="pb" onclick="location.reload()">AGAIN</button><button class="pb" id="forget">FORGET ME</button></div></div>
+<div class="panel" id="codex">
+  <h2>MEMORIES &amp; SECRETS</h2>
+  <div id="codex-list" style="max-width:560px;width:92%;max-height:55vh;overflow-y:auto;text-align:left;padding:16px 20px;font-size:.74rem;letter-spacing:.16em;line-height:1.9;border:1px solid var(--dim);background:var(--bg)"></div>
+  <button class="pb" id="cx">RETURN</button>
+</div>
+<div class="panel" id="blind-panel">
+  <h2 id="blind-title">CLOSE YOUR EYES.</h2>
+  <p id="blind-sub">LISTEN TO THE STEREO PULSE.<br>FOLLOW THE SOUND WITH YOUR CURSOR AND CLICK WHEN CLOSE.</p>
+  <button class="pb" id="blind-exit">OPEN EYES (ESC)</button>
+</div>
+<div id="by">By Teja Priyan</div><div id="ghost">YOU SELECT LIKE SOMEONE WHO SUSPECTS.</div><div id="typed"></div><div id="beam"></div><div id="echo"></div><div id="shadow"></div>
+<div id="bar">
+  <button id="bs">SOUND: OFF</button>
+  <button id="bm">MOTION: FULL</button>
+  <button id="bf">CURSOR FX: ON</button>
+  <button id="bc">MEMORIES</button>
+  <button id="bx">EXIT (ESC)</button>
+</div>
+<script>
+(()=>{
+const $=s=>document.querySelector(s),st=$('#stage'),me=$('#msg'),ring=$('#ring'),tet=$('#tether'),sleep=ms=>new Promise(r=>setTimeout(r,ms)),cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+let sd=(Date.now()%99991)+7;const rnd=()=>(sd=sd*16807%2147483647)/2147483647; // deterministic LCG
+let S={sec:[],side:{L:0,R:0},visits:0,chases:0,ok:0,fail:0,spd:0,time:0,ends:[],rooms:['surface']};
+try{Object.assign(S,JSON.parse(localStorage.getItem('wh1')||'{}'))}catch(e){}
+const prev=S.visits;S.visits++;
+const save=()=>{try{localStorage.setItem('wh1',JSON.stringify(S))}catch(e){}};
+setInterval(save,5000);addEventListener('pagehide',save);
+let W=innerWidth,H=innerHeight,rm=matchMedia('(prefers-reduced-motion:reduce)').matches,snd=false,fx=true,ac;
+const P={x:W/2,y:H*.12,vx:0,vy:0,sp:0,t:0,down:0};
+let idle=0,fails=0,escapes=0,direct=0,mood='calm',room=1,told=false,latch=false,trust=false,gentle=0,curious=0,li=0,lastMsg=0,over=false,phase=0,revT=0,revOn=false,runT=0,still=0,hinted=false,mt;
+const MM={calm:[.6,.6],nervous:[.95,1],playful:[1,.8],scared:[1.4,1.8],defiant:[1.15,1.3],trust:[0,0],curious:[0,0]};
+const LAD=['NICE TRY.','TOO SLOW.','YOU KEEP DOING THAT.',"I KNOW WHAT YOU'RE TRYING TO DO.",'STOP CHASING ME.'];
+const EL=[['OKAY.',2200],["YOU WEREN'T SUPPOSED TO FIND THE WEBSITE.",3200],['YOU FOUND THE PERSON HIDING IT.',3400]];
+const O=[];
+const HB=[],hidden={x:W*(.15+rnd()*.7),y:H*(.15+rnd()*.7),f:false},bp={x:W/2,y:H/2};
+let echoOn=false,echoT=0,lasT=0,hg=0,hgT=0,seen=0,hz=null,kt,nr=null,kn=[],shT=0,shI=-1,shOn=0,shHere=0,shHits=0,rt,nothingDone=false;
+const SP=[[.2,.3],[.8,.25],[.75,.75],[.25,.8]];
+
+// --- New Feature State
+let crumb=null,downPos={x:0,y:0},holdT=null;
+let watching=false,watchTimer=0,watchStill=0;
+let blindOn=false,blindTarget={x:W/2,y:H/2},blindPingT=0;
+let danceT=0;
+
+const SEC_INFO = [
+  { id: 'nothing', title: 'SOMETHING', desc: 'Turned NOTHING into SOMETHING in the header.', hint: 'Click the final word of the hero subtitle.' },
+  { id: 'invisible', title: 'THE INVISIBLE ONE', desc: 'Located the silent hidden frequency.', hint: 'Listen for the proximity hum or follow the dotted ring.' },
+  { id: 'shake', title: 'DIZZINESS', desc: 'Rattled the website with frantic cursor shakes.', hint: 'Vigorously shake your cursor back and forth.' },
+  { id: 'knock', title: 'WHO\'S THERE', desc: 'Knocked three times on empty space.', hint: 'Click empty space three times quickly.' },
+  { id: 'lasso', title: 'THE LASSO', desc: 'Circled around a button until it surrendered.', hint: 'Draw a continuous circle around an evasive button.' },
+  { id: 'shadow', title: 'THE INTERCEPT', desc: 'Predicted the shadow anchor twice in a row.', hint: 'Anticipate where the roaming shadow will appear.' },
+  { id: 'human', title: 'HUMAN TOUCH', desc: 'Proved humanity with curved, natural strokes.', hint: 'Catch "I AM HUMAN" without straight robotic mouse paths.' },
+  { id: 'reject', title: 'CONSENT REJECTED', desc: 'Caught the fugitive cookie consent button.', hint: 'Catch the elusive REJECT ALL button.' },
+  { id: 'select', title: 'INQUISITOR', desc: 'Selected everything on the page with Ctrl+A.', hint: 'Select all text to expose hidden ink.' },
+  { id: 'please', title: 'POLITENESS', desc: 'Typed PLEASE on the keyboard.', hint: 'Type the magic polite word on your keyboard.' },
+  { id: 'sorry', title: 'CONTRITION', desc: 'Typed SORRY when the website grew upset.', hint: 'Type an apology when things move too fast.' },
+  { id: 'hello', title: 'COURTESY', desc: 'Greeted the website with HELLO.', hint: 'Type a greeting back.' },
+  { id: 'who', title: 'AUTHORSHIP', desc: 'Asked WHO created this place.', hint: 'Type WHO to inquire about the maker.' },
+  { id: 'why', title: 'EXISTENTIAL', desc: 'Asked WHY it hides from you.', hint: 'Type WHY to question its purpose.' },
+  { id: 'bait', title: 'THE CRUMB', desc: 'Lured a shy button with an ink droplet.', hint: 'Press and hold still on empty space to drop an ink crumb.' },
+  { id: 'blind', title: 'ECHOLOCATION', desc: 'Located the button blindfolded purely by sound.', hint: 'Type LISTEN or BLIND and locate the pulse in the dark.' },
+  { id: 'freeze', title: 'STILLNESS', desc: 'Stood motionless under the Watchful Eye.', hint: 'Freeze completely when the eye in HELLO opens.' },
+  { id: 'dance', title: 'THE WALTZ', desc: 'Commanded the buttons to dance.', hint: 'Type DANCE to conduct a playful waltz.' },
+  { id: 'tab', title: 'TWIN WORLDS', desc: 'Opened the website in a second tab.', hint: 'Open this website in two browser tabs simultaneously.' },
+  { id: 'console', title: 'THE DETECTIVE', desc: 'Inspected the developer console and called reveal().', hint: 'Open DevTools and invoke reveal().' }
+];
+
+const END_INFO = [
+  { id: 'A', title: 'ENDING A · CONQUEST', desc: 'You caught the button. It let you.', hint: 'Exhaust the LEAVE button\'s stamina and click it.' },
+  { id: 'B', title: 'ENDING B · PATIENCE', desc: 'You were supposed to keep looking.', hint: 'Chase a few times, then stand completely still for 30 seconds.' },
+  { id: 'C', title: 'ENDING C · THE BACKSIDE', desc: 'You stepped behind the velvet curtain.', hint: 'Discover the small asterisk mark in the top-right.' },
+  { id: 'D', title: 'ENDING D · SURVIVOR', desc: 'You hid well in the pitch black.', hint: 'Survive the sweeping beam on the backside for 20 seconds.' },
+  { id: 'E', title: 'ENDING E · TRUST', desc: 'You moved so gently you found the person hiding it.', hint: 'Approach LEAVE with extreme, gentle slowness.' },
+  { id: 'F', title: 'ENDING F · ILLUMINATED', desc: 'Caught in the beam. Now you\'re even.', hint: 'Get spotted by the sweeping beam on the backside.' },
+  { id: 'G', title: 'ENDING G · OMNISCIENCE', desc: 'You were not supposed to find everything.', hint: 'Uncover 8 or more hidden secrets.' },
+  { id: 'X', title: 'ENDING X · DEPARTURE', desc: 'The exit was always here.', hint: 'Press Escape to leave.' }
+];
+
+const straight=()=>{const n=performance.now(),a=HB.filter(p=>n-p.t<1400);if(a.length<6)return .5;let L=0;for(let i=1;i<a.length;i++)L+=Math.hypot(a[i].x-a[i-1].x,a[i].y-a[i-1].y);return L<40?.5:Math.hypot(a[a.length-1].x-a[0].x,a[a.length-1].y-a[0].y)/L};
+const h1=$('#hero h1');h1.setAttribute('aria-label','HELLO.');h1.innerHTML=[...'HELLO.'].map(c=>`<span aria-hidden="true">${c}</span>`).join('');
+const LS=[...h1.children],LP=[1.7,.4,1,.7,1.3,.3],lc=[],lo=LS.map(()=>[0,0]);
+const measure=()=>{nr=$('#no').getBoundingClientRect();lc.length=0;LS.forEach(x=>{x.style.transform='';const r=x.getBoundingClientRect();lc.push([r.left+r.width/2,r.top+r.height/2])})};
+
+function secret(id){if(S.sec.includes(id))return;S.sec.push(id);save();beep(1000,.25,'sine',.05,1500);
+ if(S.sec.length>=8)setTimeout(()=>ending('G',[["YOU'RE NOT SUPPOSED TO FIND EVERYTHING.",3400],['I TOLD YOU.',2600]]),3500)}
+
+function shake(){if(over)return;const n=performance.now();let f=0,pd=0,pp=null,tot=0;
+ for(const p of HB){if(n-p.t>900)continue;if(pp){const dx=p.x-pp.x;if(Math.abs(dx)>3){const sg=Math.sign(dx);if(pd&&sg!==pd)f++;pd=sg;tot+=Math.abs(dx)}}pp=p}
+ if(f>=6&&tot>500){let b=null,bd=260;for(const o of O)if(o.on&&!o.busy&&o.kind!=='chaser'){const d=Math.hypot(o.x-P.x,o.y-P.y);if(d<bd){bd=d;b=o}}
+  if(b&&b.sta>0){b.sta=0;secret('shake');say('STOP SHAKING ME.',2200,1)}}}
+
+function knock(){const n=performance.now();kn=kn.filter(x=>n-x<1400);kn.push(n);
+ if(kn.length>=3&&!over&&room==1){kn=[];secret('knock');say("WHO'S THERE?",2200,1);O.forEach(o=>{if(o.on&&!o.busy)tp(o,spot(o),1800)});setTimeout(()=>{latch=true;told=false;curious++},1900)}}
+
+function lasso(){if(over||HB.length<20)return;const n=performance.now();
+ for(const o of O){if(!o.on||o.busy||o.sta<=0||o.kind==='chaser')continue;let ang=0,pa=null,c=0;
+  for(const p of HB){if(n-p.t>2200)continue;const d=Math.hypot(p.x-o.x,p.y-o.y);if(d<35||d>230){pa=null;continue}const a=Math.atan2(p.y-o.y,p.x-o.x);if(pa!==null){let da=a-pa;if(da>Math.PI)da-=2*Math.PI;if(da<-Math.PI)da+=2*Math.PI;ang+=da}pa=a;c++}
+  if(c>15&&Math.abs(ang)>5.6){o.sta=0;secret('lasso');say("THAT'S CHEATING.",2200,1);beep(300,.5,'sine',.05,90)}}}
+
+function hideGame(){if(hg)return;hg=1;const c=O.find(o=>o.kind==='chaser');c&&kill(c);echoOn=false;$('#beam').style.opacity=1;say('NOW YOU HIDE.',3400,1);beep(90,1.5,'sawtooth',.04)}
+
+function hum(hd){if(!ac)return;try{if(!snd||over||hidden.f||room!=1){if(hz)hz.g.gain.value=0;return}
+ if(!hz){const o=ac.createOscillator(),g=ac.createGain(),p=ac.createStereoPanner?ac.createStereoPanner():null;g.gain.value=0;o.connect(g);(p?g.connect(p).connect(ac.destination):g.connect(ac.destination));o.start();hz={o,g,p}}
+ const pr=cl(1-hd/320,0,1);hz.o.frequency.value=160+pr*640;hz.g.gain.value=pr*pr*.05;if(hz.p)hz.p.pan.value=cl((hidden.x-P.x)/300,-1,1)}catch(e){}}
+
+function dropCrumb(x,y){
+ if(crumb){crumb.el.remove();crumb=null}
+ const el=document.createElement('div');el.className='crumb';el.style.left=x+'px';el.style.top=y+'px';
+ document.body.appendChild(el);crumb={el,x,y};
+ say('...WHAT DID YOU LEAVE?',2200,1);beep(440,.12,'sine',.04,550)}
+
+function startBlind(){
+ blindOn=true;blindTarget={x:W*(.2+rnd()*.6),y:H*(.2+rnd()*.6)};
+ if(!snd){snd=true;$('#bs').textContent='SOUND: ON'}
+ if(!ac){try{ac=new(window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}}else if(ac.state==='suspended')ac.resume();
+ $('#blind-panel').classList.add('on');say('CLOSE YOUR EYES. LISTEN.',2800,1)}
+
+function stopBlind(){
+ blindOn=false;$('#blind-panel').classList.remove('on')}
+
+function renderCodex(){
+ const list=$('#codex-list');list.innerHTML='';
+ const endHeader=document.createElement('div');endHeader.style.fontWeight='bold';endHeader.style.marginBottom='10px';endHeader.style.borderBottom='1px solid var(--dim)';endHeader.style.paddingBottom='4px';
+ endHeader.textContent=`ENDINGS (${S.ends.length}/${END_INFO.length})`;list.appendChild(endHeader);
+ END_INFO.forEach(e=>{
+  const done=S.ends.includes(e.id);const row=document.createElement('div');row.style.marginBottom='8px';row.style.opacity=done?'1':'.55';
+  row.innerHTML=done?`<span style="color:var(--ink);font-weight:bold;">[★] ${e.title}</span><br><span style="color:var(--dim);font-size:.7rem;">${e.desc}</span>`:`<span>[·] ${e.title}</span><br><span style="color:var(--dim);font-size:.7rem;">Riddle: ${e.hint}</span>`;
+  list.appendChild(row)});
+ const secHeader=document.createElement('div');secHeader.style.fontWeight='bold';secHeader.style.margin='16px 0 10px';secHeader.style.borderBottom='1px solid var(--dim)';secHeader.style.paddingBottom='4px';
+ secHeader.textContent=`SECRETS (${S.sec.length}/${SEC_INFO.length})`;list.appendChild(secHeader);
+ SEC_INFO.forEach(s=>{
+  const done=S.sec.includes(s.id);const row=document.createElement('div');row.style.marginBottom='8px';row.style.opacity=done?'1':'.55';
+  row.innerHTML=done?`<span style="color:var(--ink);font-weight:bold;">[✓] ${s.title}</span><br><span style="color:var(--dim);font-size:.7rem;">${s.desc}</span>`:`<span>[·] ???</span><br><span style="color:var(--dim);font-size:.7rem;">Clue: ${s.hint}</span>`;
+  list.appendChild(row)});
+ $('#codex').classList.add('on')}
+
+function extras(t,dt){
+ const n=performance.now(),ee=$('#echo');
+ if(t-lasT>150){lasT=t;lasso();shake()}
+ while(HB.length>1&&HB[1].t<n-3000)HB.shift();
+ if(echoOn&&!over&&HB.length>1&&!rm){const e=HB[0];ee.style.opacity=.5;ee.style.transform=`translate(${e.x}px,${e.y}px)`;
+  if(Math.hypot(e.x-P.x,e.y-P.y)<26&&P.sp>=20&&t-echoT>2500){echoT=t;if(room==2&&revOn){runT=0;say('YOUR OWN ECHO.',1500,1)}else say("YOU'RE CHASING YOUR OWN SHADOW.",3000)}}else ee.style.opacity=0;
+ if(hg&&!over){hgT+=dt;const k=Math.min(.6,hgT*.03),bx=W/2+Math.cos(hgT*.6)*W*.34+Math.sin(hgT*1.1)*W*.08,by=H/2+Math.sin(hgT*.8)*H*.3;
+  bp.x=bx+(P.x-bx)*k;bp.y=by+(P.y-by)*k;$('#beam').style.transform=`translate(${bp.x}px,${bp.y}px)`;
+  seen=Math.hypot(bp.x-P.x,bp.y-P.y)<130?seen+dt:Math.max(0,seen-dt*.6);
+  if(hgT>3&&hgT<3.1)say('STAY IN THE DARK.',2600,1);
+  if(seen>2.2)ending('F',[['FOUND YOU.',2200],["NOW WE'RE EVEN.",2800]]);
+  else if(hgT>20)ending('D',[['YOU HID WELL.',2200],['TOO LATE.',2800]])}
+ if(room==1&&lc.length)LS.forEach((x,i)=>{if(rm){x.style.transform='';return}
+  const dx=lc[i][0]-P.x,dy=lc[i][1]-P.y,d=Math.hypot(dx,dy)||1,f=d<170?(1-d/170)*90*LP[i]*(1+P.sp/900):0,a=Math.min(1,dt*(f?10:3));
+  lo[i][0]+=(dx/d*f-lo[i][0])*a;lo[i][1]+=(dy/d*f-lo[i][1])*a;x.style.transform=`translate(${lo[i][0]}px,${lo[i][1]}px)`});
+ if(room==1&&escapes>=5&&!over){shT+=dt;const sh=$('#shadow'),sd2=()=>Math.hypot(P.x-W*SP[shI][0],P.y-H*SP[shI][1]);
+  if(shT>5){shT=0;shI=(shI+1)%4;shOn=1;shHere=sd2()<55;sh.style.transform=`translate(${W*SP[shI][0]}px,${H*SP[shI][1]}px)`;sh.style.opacity=.2}
+  if(shOn&&shT>1.6){shOn=0;sh.style.opacity=0;if(shHere&&sd2()<75){if(++shHits>=2){secret('shadow');say('YOU KNEW WHERE I WOULD BE.',3000,1);shHits=0}}else shHits=0}
+  else if(shOn&&!shHere&&sd2()<130){shOn=0;sh.style.opacity=0}}
+ const hd=Math.hypot(hidden.x-P.x,hidden.y-P.y);ring.style.borderStyle=(!hidden.f&&room==1&&hd<120)?'dotted':'solid';hum(hd);
+ if(nr&&!nothingDone)$('#no').style.opacity=(room==1&&P.x>nr.left&&P.x<nr.right&&P.y>nr.top&&P.y<nr.bottom)?.3:1;
+
+ // Red Light / Green Light (Watchful Eye)
+ if(room==1&&escapes>=4&&!watching&&!over){
+  watchTimer+=dt;
+  if(watchTimer>26){
+   watchTimer=0;watching=true;watchStill=0;
+   const lastSpan=LS[LS.length-1];if(lastSpan){lastSpan.textContent='◉';lastSpan.style.transform='scale(1.4)'}
+   say("DON'T MOVE. I'M WATCHING.",2600,1);beep(260,.2,'triangle',.04,180)}}
+ if(watching&&!over){
+  if(P.sp>70){
+   watching=false;const lastSpan=LS[LS.length-1];if(lastSpan){lastSpan.textContent='.';lastSpan.style.transform=''}
+   say('I SAW YOU MOVE.',2200,1);beep(120,.2,'sawtooth',.05,70);
+   O.forEach(o=>o.on&&!o.busy&&tp(o,spot(o),120))}
+  else{
+   watchStill+=dt;
+   if(watchStill>3.8){
+    watching=false;const lastSpan=LS[LS.length-1];if(lastSpan){lastSpan.textContent='.';lastSpan.style.transform=''}
+    secret('freeze');say('GOOD. LOOKING AWAY NOW.',2600,1);
+    O.forEach(o=>{o.sta=0;o.el.classList.add('tired')});beep(523,.25,'sine',.05,659)}}}
+
+ // Echolocation pulse for Blindfold Mode
+ if(blindOn&&!over){
+  const bd=Math.hypot(blindTarget.x-P.x,blindTarget.y-P.y);
+  const interval=130+bd*.6;
+  if(t-blindPingT>interval){
+   blindPingT=t;
+   const pan=cl((blindTarget.x-P.x)/(W*.5),-1,1);
+   const freq=cl(850-bd*.8,200,1100);
+   beep(freq,.06,'sine',.04,freq*1.2,pan)}}
+}
+
+// ---------- sound
+const beep=(f,d=.08,t='sine',v=.05,s=0,pan=0)=>{if(!snd||!ac)return;try{const o=ac.createOscillator(),g=ac.createGain(),p=ac.createStereoPanner?ac.createStereoPanner():null,n=ac.currentTime;o.type=t;o.frequency.setValueAtTime(f,n);if(s)o.frequency.exponentialRampToValueAtTime(s,n+d);g.gain.setValueAtTime(v,n);g.gain.exponentialRampToValueAtTime(.0001,n+d);if(p){p.pan.setValueAtTime(pan,n);o.connect(g).connect(p).connect(ac.destination)}else{o.connect(g).connect(ac.destination)}o.start(n);o.stop(n+d)}catch(e){}};
+
+// ---------- messages
+function say(t,ms=2600,force){const n=performance.now();if(!force&&n-lastMsg<5500)return false;lastMsg=n;me.textContent=t;me.classList.add('on');clearTimeout(mt);mt=setTimeout(()=>me.classList.remove('on'),ms);return true}
+const tease=()=>{if(say(LAD[Math.min(li,4)]))li++};
+async function cine(l,keep){const p=$('#end'),h=$('#endt');p.classList.add('on');for(const [t,ms] of l){h.style.opacity=0;await sleep(350);h.textContent=t;h.style.opacity=1;await sleep(ms)}if(!keep&&!over)p.classList.remove('on')}
+async function ending(id,lines){if(over)return;over=true;if(id!=='X'&&!S.ends.includes(id))S.ends.push(id);save();beep(200,.9,'sine',.06,90);await cine(lines,1);$('#endsub').textContent=id==='X'?'':`ENDINGS ${S.ends.length}/${END_INFO.length} · SECRETS ${S.sec.length}/${SEC_INFO.length} · CHASES ${S.chases} · CAUGHT ${S.ok} · MISSED ${S.fail}`;$('#endbtns').style.display='flex'}
+const bye=()=>ending('X',[['YOU LEFT.',1500],['THE EXIT WAS ALWAYS HERE.',1800]]);
+
+// ---------- objects
+function mk(label,p){const el=document.createElement('button');el.className='o';el.textContent=label;st.appendChild(el);const b=el.getBoundingClientRect();
+ const o=Object.assign({el,label,x:W/2,y:H*.7,vx:0,vy:0,z:0,w:b.width,h:b.height,R:150,pow:1,sta:8,kind:'shy',corner:0,cc:0,le:0,hop:0,fe:0,dead:0,sc:1,on:true,busy:0,tame:false},p);o.max=o.sta;O.push(o);
+ el.addEventListener('click',e=>{if(e.detail===0)caught(o)});
+ return o}
+const kill=o=>{o.on=false;o.el.remove();const i=O.indexOf(o);if(i>-1)O.splice(i,1)};
+const hide=o=>{o.on=false;o.el.classList.add('gone')};
+
+function spot(o){const m=70,dl=Math.hypot(P.vx,P.vy)||1;let best=[W/2,H/2],bs=-1e9;
+ for(let i=0;i<28;i++){const x=m+rnd()*(W-2*m),y=m+rnd()*(H-2*m);let s=Math.hypot(x-P.x,y-P.y);
+  s+=Math.min(...O.filter(q=>q!==o&&q.on).map(q=>Math.hypot(x-q.x,y-q.y)),400)*.4;
+  s+=Math.min(...(o.h2||[]).map(h=>Math.hypot(x-h[0],y-h[1])),300)*.3;
+  s-=((x-P.x)*P.vx+(y-P.y)*P.vy)/dl*.5;
+  s+=Math.min(x,W-x,y,H-y,200)*.6;if(S.side.L+S.side.R>=8)s+=(S.side.L>S.side.R?x-P.x:P.x-x)*.12;
+  if(s>bs){bs=s;best=[x,y]}}
+ return best}
+const behind=()=>{const dl=Math.hypot(P.vx,P.vy);let x=P.x,y=P.y;if(dl>30){x-=P.vx/dl*190;y-=P.vy/dl*190}else{x+=(rnd()-.5)*300;y+=(rnd()<.5?-190:190)}return[cl(x,60,W-60),cl(y,70,H-70)]};
+function tp(o,xy,ms=180){if(o.busy)return;o.busy=1;o.el.classList.add('gone');beep(500,.05,'triangle',.04,120);
+ setTimeout(()=>{if(!O.includes(o))return;o.x=xy[0];o.y=xy[1];o.vx=o.vy=0;(o.h2=o.h2||[]).push(xy);if(o.h2.length>6)o.h2.shift();o.busy=0;if(o.on)o.el.classList.remove('gone')},rm?ms+150:ms)}
+
+// ---------- behaviour
+function escaped(o,d){escapes++;S.chases++;S.side[P.x<o.x?'L':'R']++;o.sta=Math.max(0,o.sta-1);beep(320,.09,'triangle',.04,180);
+ if(P.sp>150&&(P.vx*(o.x-P.x)+P.vy*(o.y-P.y))/(P.sp*d)>.85)direct++;
+ if(room!=1)return;
+ if(escapes==3&&o.label==='LEAVE')tp(o,behind(),900);
+ if(escapes==6)mk('HELP',{x:W*.2,y:H*.3,R:210,pow:1.6,sta:5});
+ if(escapes==9)mk('ENTER',{x:W*.8,y:H*.32,R:170,pow:1.2,sta:5,kind:'trick'});
+ if(escapes==12)say("YOU'RE REALLY BAD AT THIS.",3200,1);
+ if(escapes==7)mk('I AM HUMAN',{x:W*.5,y:H*.22,R:180,pow:1.3,sta:99});
+ if(escapes==8)mk('REJECT ALL',{x:W*.3,y:H*.35,R:190,pow:1.5,sta:4});
+ if(escapes==15)echoOn=true;
+ if(escapes%4==0)tease()}
+
+function counter(o){const i=o.cc++%5;
+ if(i==0)tp(o,behind());
+ else if(i==1){o.sc=.4;setTimeout(()=>{o.sc=1},1800);tp(o,spot(o),300)}
+ else if(i==2)tp(o,spot(o),1400);
+ else if(i==4){o.dead=performance.now()+2600;o.el.textContent='x_x';setTimeout(()=>{if(O.includes(o))o.el.textContent=o.label},2600)}
+ else{const c=mk(o.label,{decoy:1,sta:9,x:o.x,y:o.y,R:170,pow:1.2});setTimeout(()=>O.includes(c)&&kill(c),9000);tp(o,spot(o));say('PLEASE.',1800,1)}}
+
+function moodUpdate(){
+ if(trust)mood='trust';
+ else if(latch){if(P.sp>260){latch=false;told=false;gentle=0;say('TOO FAST.',1800,1);mood='scared'}else mood='curious'}
+ else if(idle>2.2&&escapes+fails>=4){latch=true;mood='curious'}
+ else mood=escapes<1?'calm':P.sp>650?'scared':(direct>=6&&escapes>=8)?'defiant':escapes>=12?'scared':(escapes>=4&&P.sp<220)?'playful':'nervous';
+ if(!latch)gentle=0}
+
+function chase(o,dx,dy,d,dt,t){
+ const v=Math.min(120+runT*12,270);runT+=dt;
+ if(P.sp<20&&d<200){still+=dt;if(still>3)ending('E',EL)}else if(P.sp>=20)still=0;
+ if(runT>6&&!hinted){hinted=true;say('YOU COULD JUST STOP.',3000,1)}
+ const stop=P.sp<20?46:8;
+ if(d>stop){const s=Math.min(v*(rm?.8:dt),d-stop);if(rm){if(t-o.hop>800){o.hop=t;tp(o,[o.x-dx/d*s,o.y-dy/d*s],100)}}else{o.x-=dx/d*s;o.y-=dy/d*s}}
+ else if(P.sp>=20&&d<28&&t-o.le>1500){o.le=t;runT=0;say('GOT YOU.',1600,1);tp(o,[P.x<W/2?W-70:70,P.y<H/2?H-70:70],250)}
+ if(runT>16)hideGame()}
+
+function phys(o,dt,t){if(!o.on||o.busy||t<o.dead)return;
+ if(document.activeElement===o.el&&o.el.matches(':focus-visible'))return;
+ let dx=o.x-P.x,dy=o.y-P.y,d=Math.hypot(dx,dy)||1,ax=0,ay=0;
+ if(o.kind==='chaser'){chase(o,dx,dy,d,dt,t);return}
+ let b=room==1?(o.label==='LEAVE'?mood:mood==='curious'?'curious':'scared'):o.kind==='curious'?(idle>1.4?'curious':'scared'):o.kind==='sleepy'?'calm':'scared';
+ if(b==='calm'&&P.down&&t-P.down>600)b='nervous';
+ if(b==='defiant'&&P.sp>250){if(o.hx!==undefined&&P.vx*o.hx+P.vy*o.hy<0&&t-o.fe>2500){o.fe=t;o.vx+=o.hx*.8;o.vy+=o.hy*.8;o.sta=Math.max(0,o.sta-2);say('OOPS.',1500,1)}o.hx=P.vx;o.hy=P.vy}
+ const M=MM[b],Rr=o.R*M[0],pw=M[1]*o.pow*(o.sta<=0?.25:1);o.tame=false;
+
+ // Crumb attraction
+ if(crumb&&room==1&&o.label==='LEAVE'){
+  const pcd=Math.hypot(P.x-crumb.x,P.y-crumb.y);
+  if(pcd>150){
+   const cdx=crumb.x-o.x,cdy=crumb.y-o.y,cd=Math.hypot(cdx,cdy)||1;
+   if(cd<26){
+    crumb.el.remove();crumb=null;o.sta=0;o.el.classList.add('tired');
+    secret('bait');say('...DELICIOUS.',2400,1);beep(587,.3,'sine',.05,880)}
+   else{ax+=(cdx/cd)*700;ay+=(cdy/cd)*700}}}
+
+ if(b==='curious'||b==='trust'){const w=b==='trust'?70:115;o.tame=room==2&&d<w+60;
+  if(rm){if(d>w+60&&t-o.le>1200){o.le=t;tp(o,[cl(P.x+w,60,W-60),cl(P.y-50,70,H-70)],120)}}else{const k=(d-w)*7;ax-=dx/d*k;ay-=dy/d*k}
+  if(room==1&&o.label==='LEAVE'){
+   if(d<170&&!told){told=true;curious++;say("DON'T MOVE.",3200,1);beep(180,.6,'sine',.05,120)}
+   if(b==='curious'&&d<190&&P.sp>6&&P.sp<120){gentle+=dt;if(gentle>3.5&&curious>0&&!trust){trust=true;say('...',2600,1)}}}
+ }else if(d<Rr){
+  if(rm){if(d<Rr*.5&&t-o.le>900){o.le=t;escaped(o,d);tp(o,spot(o),120)}}
+  else{const px=P.x+(b==='defiant'?P.vx*.35:0),py=P.y+(b==='defiant'?P.vy*.35:0),ex=o.x-px,ey=o.y-py,e=Math.hypot(ex,ey)||1;
+   const f=(1-Math.min(d,Rr)/Rr)*(d<Rr*.5?2.2:1),a=f*2600*pw*(1+Math.min(P.sp/700,1.5));
+   ax+=ex/e*a;ay+=ey/e*a;
+   if(Math.min(o.x,W-o.x,o.y,H-o.y)<110){const s=Math.sign(-ey*(W/2-o.x)+ex*(H/2-o.y))||1;ax+=-ey/e*s*1800*f;ay+=ex/e*s*1800*f}
+   if(b==='playful'){const w=Math.sin(t/260);ax+=-ey/e*w*900*f;ay+=ex/e*w*900*f}
+   if(d<Rr*.5&&t-o.le>900){o.le=t;escaped(o,d)}}
+  if(o.label==='CLICK ME'&&d<110&&t-o.le>900){o.le=t;tp(o,spot(o))}
+ }
+ if(d<Rr*.6&&Math.min(o.x,W-o.x)<100&&Math.min(o.y,H-o.y)<100){o.corner+=dt;if(o.corner>.5){o.corner=0;counter(o)}}else o.corner=Math.max(0,o.corner-dt);
+ if(rm)return;
+ for(const q of O)if(q!==o&&q.on&&!q.busy){const qx=o.x-q.x,qy=o.y-q.y,qd=Math.hypot(qx,qy)||1;if(qd<100){const f=(1-qd/100)*900;ax+=qx/qd*f;ay+=qy/qd*f}}
+ const m=50;if(o.x<m)ax+=(m-o.x)*40;if(o.x>W-m)ax-=(o.x-W+m)*40;if(o.y<m)ay+=(m-o.y)*40;if(o.y>H-m)ay-=(o.y-H+m)*40;
+ const fr=Math.exp(-3.2*dt);o.vx=cl((o.vx+ax*dt)*fr,-1500,1500);o.vy=cl((o.vy+ay*dt)*fr,-1500,1500);
+ o.x=cl(o.x+o.vx*dt,30,W-30);o.y=cl(o.y+o.vy*dt,30,H-30)}
+
+// ---------- story beats
+function caught(o){if(over||o.busy||!o.on)return;S.ok++;beep(660,.2,'sine',.06,880);const L=o.label;
+ if(o.decoy){say('NOT ME.',1600,1);return kill(o)}
+ if(L==='LEAVE')return trust?ending('E',EL):ending('A',[['YOU WIN.',2200],['I LET YOU.',2600]]);
+ if(L==='ENTER'&&phase<2)return fake(o);
+ const T={HELP:'NO ONE IS COMING.',ENTER:'YOU ALREADY DID THAT.',EXIT:'THE REAL EXIT IS ELSEWHERE.','CLICK ME':'I LIED.',STAY:'...',SETTINGS:'zzz','I AM HUMAN':'PROVE IT.','REJECT ALL':"I'M NOT TRACKING YOU. YOU'RE TRACKING ME."}[L]||'';
+ if(L==='REJECT ALL')secret('reject');say(T,2200,1);o.sta=o.max;if(L!=='STAY'&&L!=='SETTINGS')tp(o,spot(o))}
+
+async function fake(o){phase=2;o.busy=1;await cine([['SUCCESS.',1400],['...NO.',1300]]);o.busy=0;document.body.classList.add('odd');o.sta=o.max+3;tp(o,spot(o));
+ mk('EXIT',{x:W*.85,y:H*.2,R:220,pow:1.8,sta:6});say('IT WAS ONLY THE BEGINNING.',3200,1);setTimeout(()=>$('#star').classList.add('on'),6000)}
+
+async function enterBack(){$('#door').classList.remove('on');if(!S.rooms.includes('backside'))S.rooms.push('backside');if(!S.ends.includes('C'))S.ends.push('C');save();
+ const c=cine([["YOU WEREN'T SUPPOSED TO SEE THIS.",2400]]);
+ for(const o of O.slice())kill(o);$('#hero').style.opacity=0;$('#star').classList.remove('on');document.body.classList.add('back');room=2;mood='scared';revT=performance.now();
+ [['STAY',{kind:'curious',x:W*.25,y:H*.35,z:120,R:190}],['CLICK ME',{kind:'liar',x:W*.75,y:H*.3,R:130,pow:1.2}],['EXIT',{kind:'panic',x:W*.7,y:H*.75,z:-120,R:220,pow:2}],['SETTINGS',{kind:'sleepy',x:W*.3,y:H*.72,z:-240,R:70,pow:.35,sta:3}]].forEach(([l,p])=>mk(l,p));
+ await c;say('THE BACKSIDE.',3000,1)}
+
+async function rev(){revOn=true;O.forEach(hide);beep(80,2,'sawtooth',.02);await sleep(2600);if(over)return;
+ mk('HELLO',{kind:'chaser',x:cl(P.x,80,W-80),y:cl(P.y-110,70,H-70),sta:99});runT=0;still=0;say('YOUR TURN TO RUN.',3600,1);echoOn=true;beep(110,.7,'sawtooth',.05)}
+
+// ---------- input
+function mv(e){const n=performance.now(),dt=Math.max((n-P.t)/1000,.008);
+ if(P.t){P.vx=cl(P.vx+((e.clientX-P.x)/dt-P.vx)*.4,-4000,4000);P.vy=cl(P.vy+((e.clientY-P.y)/dt-P.vy)*.4,-4000,4000)}
+ P.x=e.clientX;P.y=e.clientY;P.t=n;HB.push({x:P.x,y:P.y,t:n});if(HB.length>1500)HB.shift();S.spd=Math.round(S.spd*.995+Math.hypot(P.vx,P.vy)*.005)}
+
+addEventListener('pointermove',e=>{
+ if(!over)mv(e);ring.style.opacity=fx&&!rm?.4:0;
+ if(holdT&&Math.hypot(e.clientX-downPos.x,e.clientY-downPos.y)>18){clearTimeout(holdT);holdT=null}});
+
+addEventListener('pointerup',()=>{
+ P.down=0;if(holdT){clearTimeout(holdT);holdT=null}});
+
+addEventListener('pointerdown',e=>{
+ if(over||e.target.closest('#bar,#star,.panel'))return;
+ P.x=e.clientX;P.y=e.clientY;P.vx=P.vy=0;P.down=performance.now();ring.style.opacity=fx&&!rm?.4:0;
+ downPos={x:P.x,y:P.y};
+ if(room==1&&!crumb){clearTimeout(holdT);holdT=setTimeout(()=>{if(!over&&room==1)dropCrumb(downPos.x,downPos.y)},750)}
+
+ // Blindfold click test
+ if(blindOn){
+  const bd=Math.hypot(blindTarget.x-P.x,blindTarget.y-P.y);
+  if(bd<72){
+   secret('blind');say('YOU HEARD ME IN THE DARK.',3000,1);beep(980,.4,'sine',.08,1800);stopBlind()}
+  else{
+   beep(120,.15,'sawtooth',.04);say(bd<200?'VERY CLOSE.':bd<380?'WARM.':'COLD.',1200,1)}
+  return}
+
+ if(room==1&&!nothingDone&&nr&&P.x>nr.left-8&&P.x<nr.right+8&&P.y>nr.top-8&&P.y<nr.bottom+8){nothingDone=true;$('#no').style.opacity=1;$('#no').textContent='SOMETHING';secret('nothing');say('WELL. NOW THERE IS.',2800,1);return}
+ if(room==1&&!hidden.f&&Math.hypot(P.x-hidden.x,P.y-hidden.y)<28){hidden.f=true;secret('invisible');$('#star').classList.add('on');say('YOU FOUND THE INVISIBLE ONE.',3000,1);beep(900,.4,'sine',.06,1400);return}
+ let h=null,hd=1e9;for(const o of O){if(!o.on||o.busy||o.kind==='chaser')continue;const ed=Math.max(Math.abs(P.x-o.x)-o.w/2,Math.abs(P.y-o.y)-o.h/2);if(ed<hd){hd=ed;h=o}}
+ if(!h||hd>28){knock();return}
+ if(h.dead>performance.now()){h.dead=0;h.el.textContent=h.label;h.sta=Math.max(0,h.sta-3);say('...I WAS RESTING.',2000,1);tp(h,spot(h));return}
+ if(h.label==='I AM HUMAN'){if(straight()<.9){$('#star').classList.add('on');secret('human');say('FINE. YOU ARE HUMAN.',2600,1);beep(700,.2)}else say('TOO STRAIGHT. ARE YOU A BOT?',2400,1);tp(h,spot(h));return}
+ if(h.decoy||h.sta<=0||h.tame||(trust&&h.label==='LEAVE'))return caught(h);
+ S.fail++;fails++;h.sta=Math.max(0,h.sta-1.5);tp(h,fails%3==2?behind():spot(h));tease();beep(200,.12,'square',.03,90)});
+
+let kb='';addEventListener('keydown',e=>{
+ if(e.key==='Escape'){
+  if(blindOn){stopBlind();return}
+  if($('#codex').classList.contains('on')){$('#codex').classList.remove('on');return}
+  bye()}
+ else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a')secret('select');
+ else if(/^[a-z]$/i.test(e.key)&&!e.ctrlKey&&!e.metaKey&&!over){
+  kb=(kb+e.key.toUpperCase()).slice(-12);const te=$('#typed');te.textContent=kb;te.style.opacity=.7;clearTimeout(kt);kt=setTimeout(()=>{te.style.opacity=0;kb=''},1600);
+  if(kb.endsWith('PLEASE')){secret('please');O.forEach(o=>o.sta=0);say('...FINE.',2200,1);kb=''}
+  if(kb.endsWith('SORRY')&&room==1){latch=true;told=false;curious++;secret('sorry');say('...IT HAPPENS.',2200,1);kb=''}
+  if(kb.endsWith('WHERE')){const d=Math.hypot(hidden.x-P.x,hidden.y-P.y);say(hidden.f?'YOU ALREADY KNOW.':d<150?'BURNING.':d<350?'WARM.':'COLD.',1800,1);kb=''}
+  if(kb.endsWith('HELLO')){secret('hello');say('...HELLO.',2400,1);O.forEach(o=>o.sta=Math.min(o.sta,3));kb=''}
+  if(kb.endsWith('WHO')){secret('who');say('CODE & CONCEPT BY TEJA PRIYAN.',3200,1);kb=''}
+  if(kb.endsWith('WHY')){secret('why');say("BECAUSE YOU WOULDN'T STAY IF IT WERE EASY.",3400,1);kb=''}
+  if(kb.endsWith('DANCE')){secret('dance');danceT=performance.now();say('JUST THIS ONCE.',2500,1);beep(440,.2,'sine',.05,880);kb=''}
+  if(kb.endsWith('BLIND')||kb.endsWith('LISTEN')){startBlind();kb=''}
+  if(kb.endsWith('LIGHT')){document.documentElement.setAttribute('data-theme','light');say('TOO BRIGHT.',2000,1);kb=''}
+  if(kb.endsWith('DARK')){document.documentElement.setAttribute('data-theme','dark');say('INTO THE SHADOWS.',2000,1);kb=''}
+  if(kb.endsWith('HINT')||kb.endsWith('CLUE')){
+   const locked=SEC_INFO.filter(s=>!S.sec.includes(s.id));
+   say(locked.length?`CLUE: ${locked[Math.floor(rnd()*locked.length)].hint}`:'YOU HAVE DISCOVERED ALL SECRETS.',3400,1);kb=''}
+}});
+
+document.addEventListener('mouseout',e=>{if(e.relatedTarget||over||room!=1||!escapes)return;const o=O.find(q=>q.label==='LEAVE'&&q.on&&!q.busy);
+ if(o){tp(o,[cl(e.clientX,60,W-60),cl(e.clientY,80,H-60)],400);say(e.clientY<10?'NOT THE TAB.':"DON'T GO.",1800,1)}});
+
+document.addEventListener('visibilitychange',()=>{if(document.hidden){document.title="I'M NOT HERE.";save()}else{document.title='The Website That Hides From You';if(!over&&room==1&&escapes>0){O.forEach(o=>o.on&&tp(o,spot(o),300));say('YOU LEFT. I MOVED.',2800,1)}}});
+addEventListener('resize',()=>{W=innerWidth;H=innerHeight;measure();clearTimeout(rt);rt=setTimeout(()=>!over&&say('STOP RESIZING ME.',2200),500);O.forEach(o=>{o.x=cl(o.x,40,W-40);o.y=cl(o.y,40,H-40)})});
+
+$('#star').onclick=()=>{beep(880,.3,'sine',.06,1320);$('#door').classList.add('on')};
+$('#go').onclick=enterBack;
+$('#forget').onclick=()=>{try{localStorage.removeItem('wh1')}catch(e){}location.reload()};
+$('#bs').onclick=()=>{snd=!snd;try{if(snd){ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume()}}catch(e){}$('#bs').textContent='SOUND: '+(snd?'ON':'OFF');beep(440,.1)};
+const setRM=()=>{document.body.classList.toggle('rm',rm);$('#bm').textContent='MOTION: '+(rm?'REDUCED':'FULL')};
+$('#bm').onclick=()=>{rm=!rm;setRM()};setRM();
+$('#bf').onclick=()=>{fx=!fx;$('#bf').textContent='CURSOR FX: '+(fx?'ON':'OFF')};
+$('#bc').onclick=renderCodex;
+$('#cx').onclick=()=>$('#codex').classList.remove('on');
+$('#blind-exit').onclick=stopBlind;
+$('#bx').onclick=bye;
+
+// Multi-Tab Connection (BroadcastChannel)
+try{
+ if(window.BroadcastChannel){
+  const tabId=Math.random().toString(36).slice(2);
+  const chan=new BroadcastChannel('wthfy_relay');
+  chan.postMessage({type:'open',id:tabId});
+  chan.onmessage=e=>{
+   if(!e.data||e.data.id===tabId)return;
+   if(e.data.type==='open'){
+    secret('tab');say('YOU OPENED ANOTHER TAB.',2600,1);
+    chan.postMessage({type:'ack',id:tabId,to:e.data.id})}
+   if(e.data.type==='ack'&&e.data.to===tabId){
+    secret('tab');say('YOU FOLLOWED ME HERE?',2600,1)}}}}
+catch(e){}
+
+// Developer Console Hooks
+console.log('%cTHE WEBSITE THAT HIDES FROM YOU%c\nLooking for secrets in the console? Try reveal(), apologize(), or hint().','font:bold 15px Georgia,serif;color:#1a1917','font:12px monospace;color:#77736a');
+window.reveal=()=>{secret('console');say('PEEKING AT CODE WON\'T MAKE IT EASIER.',3000,1);return 'Secret discovered: [console]. A true inspector.'};
+window.apologize=()=>{latch=true;told=false;curious++;secret('sorry');say('...APOLOGY ACCEPTED.',2400,1);return 'The website has calmed down.'};
+window.hint=()=>{const l=SEC_INFO.filter(s=>!S.sec.includes(s.id));return l.length?`Riddle: ${l[Math.floor(rnd()*l.length)].hint}`:'Every secret has been uncovered.'};
+
+// ---------- loop
+let last=performance.now(),tickT=0;
+function draw(){let nd=1e9,near=null;const T=rm?0:1;
+ for(const o of O){const off=room==2?(P.x-W/2)*o.z*-.0003:0,tx=room==2?(P.x-o.x)/W*14*T:0,ty=room==2?(o.y-P.y)/H*10*T:0;
+  o.el.style.transform=`translate3d(${o.x-o.w/2+off}px,${o.y-o.h/2}px,0) perspective(500px) rotateY(${tx}deg) rotateX(${ty}deg) scale(${o.sc*(1+o.z/900)})`;
+  o.el.classList.toggle('tired',o.sta<=0);
+  if(o.on&&!o.busy){const d=Math.hypot(o.x-P.x,o.y-P.y);if(d<nd){nd=d;near=o}}}
+ ring.style.transform=`translate(${P.x}px,${P.y}px) scale(${1+cl(1-nd/220,0,1)*.9})`;
+ const tt=fx&&!rm&&near&&room==1&&(mood==='curious'||mood==='trust');
+ if(tt){const l=Math.hypot(near.x-P.x,near.y-P.y);tet.style.transform=`translate(${P.x}px,${P.y}px) rotate(${Math.atan2(near.y-P.y,near.x-P.x)}rad) scaleX(${l})`}
+ tet.style.opacity=tt?.35:0;
+ return nd}
+
+function loop(t){requestAnimationFrame(loop);const dt=Math.min((t-last)/1000,.05);last=t;
+ const k=Math.exp(-dt*6);P.vx*=k;P.vy*=k;P.sp=Math.hypot(P.vx,P.vy);
+ if(!over){S.time+=dt;idle=P.sp<25?idle+dt:0;
+  if(idle>1.5)for(const o of O)o.sta=Math.min(o.max,o.sta+dt*.4);
+  if(room==1)moodUpdate();
+  if(t-danceT<3600){
+   const ang=(t-danceT)*.006;
+   O.forEach((o,i)=>{if(o.on&&!o.busy){o.x=cl(o.x+Math.cos(ang+i*1.6)*3.5,40,W-40);o.y=cl(o.y+Math.sin(ang+i*1.6)*3.5,40,H-40)}})}
+  for(const o of O.slice())phys(o,dt,t);
+  if(room==2&&!revOn&&t-revT>10000)rev();
+  if(room==1&&idle>30&&escapes+fails>=3)ending('B',[['YOU WERE SUPPOSED TO KEEP LOOKING.',3600]]);}
+ extras(t,dt);
+ const nd=draw();
+ if(snd&&!over&&t-tickT>260&&nd<200){tickT=t;beep(200+(1-nd/200)*500,.04,'sine',.015)}}
+
+mk('LEAVE',{x:W/2,y:H*.68,sta:14});measure();document.fonts&&document.fonts.ready.then(measure);
+if(S.side.L+S.side.R>=8)setTimeout(()=>say('YOU ALWAYS COME FROM THE '+(S.side.L>S.side.R?'LEFT':'RIGHT')+'.',3200,1),prev>0?6500:9000);
+if(prev>0)setTimeout(()=>say(S.ends.length?'YOU CAME BACK.':'STILL LOOKING?',3500,1),1600);
+requestAnimationFrame(loop);
+})();
+</script></body></html>
